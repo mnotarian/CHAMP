@@ -105,7 +105,7 @@ class PartitionEnsemble(object):
 
 
 	def __init__(self,graph=None,interlayer_graph=None,layer_vec=None,
-	listofparts=None,name='unnamed_graph',maxpt=None,min_com_size=5,
+	listofparts=None,name='unnamed_graph',maxpt=None,min_com_size=0,
 					  calc_sim_mat=True,all_coefs_present=False):
 		"""
 
