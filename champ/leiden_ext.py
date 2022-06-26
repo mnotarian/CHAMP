@@ -85,7 +85,7 @@ def run_leiden(gfile,gamma,nruns,weight=None,node_subset=None,attribute=None,nit
 
 
 
-		rp = leidenalg.find_partition(gr,leidenalg.CPMVertexPartition,weights=weight,
+		rp = leidenalg.find_partition(gr,leidenalg.RBConfigurationVertexPartition,weights=weight,
 									resolution_parameter=gamma,n_iterations=niterations)
 
 		#old way of calling
@@ -164,7 +164,7 @@ def parallel_leiden(graph,start=0,fin=1,numruns=200,maxpt=None,niterations=5,
 	else:
 		gammas=np.linspace(start,fin,numruns)
 	if iswin: #on a windows system
-		warnings.warn("Parallel Leiden function is not available of windows system.  Running in serial",
+		warnings.warn("Parallel Leiden Modularity function is not available of windows system.  Running in serial",
 					  UserWarning)
 		for i,gam in enumerate(gammas):
 			cpart_ens=run_leiden_windows(graph=graph,nruns=nrepeats,gamma=gam,node_subset=node_subset,
@@ -277,7 +277,7 @@ def run_leiden_windows(graph,gamma,nruns,weight=None,node_subset=None,attribute=
 
 		#In louvain > 0.6, change in the way the different methods are called.
 		#modpart=louvain.RBConfigurationVertexPartition(gr,resolution_parameter=gamma)
-		rp = leidenalg.find_partition(gr,leidenalg.CPMVertexPartition,
+		rp = leidenalg.find_partition(gr,leidenalg.RBConfigurationVertexPartition,
 									n_iterations=niterations,weights=weight,
 									resolution_parameter=gamma)
 
@@ -348,7 +348,7 @@ def parallel_leiden_CPM(graph,start=0,fin=1,numruns=200,maxpt=None,niterations=5
 	else:
 		gammas=np.linspace(start,fin,numruns)
 	if iswin: #on a windows system
-		warnings.warn("Parallel Leiden function is not available of windows system.  Running in serial",
+		warnings.warn("Parallel Leiden CPM function is not available of windows system.  Running in serial",
 					  UserWarning)
 		for i,gam in enumerate(gammas):
 			cpart_ens=run_leiden_windows_CPM(graph=graph,nruns=nrepeats,gamma=gam,node_subset=node_subset,
