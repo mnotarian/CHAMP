@@ -85,7 +85,7 @@ def run_leiden(gfile,gamma,nruns,weight=None,node_subset=None,attribute=None,nit
 
 
 
-		rp = leidenalg.find_partition(gr,leidenalg.RBConfigurationVertexPartition,weights=weight,
+		rp = leidenalg.find_partition(gr,leidenalg.CPMVertexPartition,weights=weight,
 									resolution_parameter=gamma,n_iterations=niterations)
 
 		#old way of calling
