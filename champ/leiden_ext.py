@@ -277,7 +277,7 @@ def run_leiden_windows(graph,gamma,nruns,weight=None,node_subset=None,attribute=
 
 		#In louvain > 0.6, change in the way the different methods are called.
 		#modpart=louvain.RBConfigurationVertexPartition(gr,resolution_parameter=gamma)
-		rp = leidenalg.find_partition(gr,leidenalg.RBConfigurationVertexPartition,
+		rp = leidenalg.find_partition(gr,leidenalg.CPMVertexPartition,
 									n_iterations=niterations,weights=weight,
 									resolution_parameter=gamma)
 
