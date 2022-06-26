@@ -164,7 +164,7 @@ def parallel_leiden(graph,start=0,fin=1,numruns=200,maxpt=None,niterations=5,
 	else:
 		gammas=np.linspace(start,fin,numruns)
 	if iswin: #on a windows system
-		warnings.warn("Parallel Louvain function is not available of windows system.  Running in serial",
+		warnings.warn("Parallel Leiden function is not available of windows system.  Running in serial",
 					  UserWarning)
 		for i,gam in enumerate(gammas):
 			cpart_ens=run_leiden_windows(graph=graph,nruns=nrepeats,gamma=gam,node_subset=node_subset,
