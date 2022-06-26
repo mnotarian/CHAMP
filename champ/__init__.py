@@ -26,6 +26,7 @@ from .louvain_ext import adjacency_to_edges
 
 from .leiden_ext import run_leiden
 from .leiden_ext import parallel_leiden
+from .leiden_ext import parallel_leiden_CPM
 
 from .PartitionEnsemble import PartitionEnsemble
 
