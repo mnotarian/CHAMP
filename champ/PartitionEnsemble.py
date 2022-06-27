@@ -1535,7 +1535,7 @@ sub
 							path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
 
 
-		a2.set_ylabel(r"\# communities ($\ge %d $ nodes)" % (self._min_com_size))
+		a2.set_ylabel(r"\# communities ($> %d $ nodes)" % (self._min_com_size))
 
 		ax.set_zorder(a2.get_zorder() + 1)  # put ax in front of ax2
 		ax.patch.set_visible(False)  # hide the 'canvas'
@@ -1543,12 +1543,12 @@ sub
 		ax.set_xlim(xmin=0, xmax=max(allgams))
 		if champ_only:
 			leg_set=[mk2, mk4, mk5] #these are the only ones that are created if the legend is made
-			leg_text=[ r'\# communities ($\ge %d $ nodes)' % (self._min_com_size), "transitions,$\gamma$",
-							r"\# communities ($\ge %d$ nodes) optimal" % (self._min_com_size), "convex hull of $Q(\gamma)$"]
+			leg_text=[ r'\# communities ($> %d $ nodes)' % (self._min_com_size), "transitions,$\gamma$",
+							r"\# communities ($> %d$ nodes) optimal" % (self._min_com_size), "convex hull of $Q(\gamma)$"]
 		else:
 			leg_set=[mk1, mk3, mk2, mk4, mk5]
-			leg_text=['modularity', r'\# communities ($\ge %d $ nodes)' % (self._min_com_size), "transitions,$\gamma$",
-			 r"\# communities ($\ge %d$ nodes) optimal" % (self._min_com_size), "convex hull of $Q(\gamma)$"]
+			leg_text=['modularity', r'\# communities ($> %d $ nodes)' % (self._min_com_size), "transitions,$\gamma$",
+			 r"\# communities ($> %d$ nodes) optimal" % (self._min_com_size), "convex hull of $Q(\gamma)$"]
 		if legend:
 			l = ax.legend(leg_set,
 						  leg_text,
