@@ -201,8 +201,8 @@ def plot_single_layer_modularity_domains_custom(partensemble, ax=None, colors=No
 
         ax.scatter(coords[0],coords[1],color=c,marker='x')
         ax.plot(coords[0],coords[1],color=c,lw=2,alpha=.75)
-        ax.set_ylim([np.min(allmods) - 100, np.max(allmods) + 100])
-        ax.set_xlim(xmin=0, xmax=max(allgams))
+        ax.set_ylim([np.min(allmods) - 100,  np.max(allmods) + (max(allmods)/60)])
+        ax.set_xlim(xmin=(0-(max(allgams)/30)), xmax=max(allgams))
 
     if labels is not None:
         if labels is True:
@@ -299,15 +299,15 @@ def plot_similarity_heatmap_single_layer(partitions, index_2_domain, partitions_
     plt.colorbar(pmap, ax=ax)
     return ax, AMI_mat
 
-def plot_similarity_heatmap_single_layer_custom(partitions, index_2_domain, res, partitions_other=None,index_2_dom_other=None,
+def plot_similarity_heatmap_single_layer_custom(partensemble, partitions_other=None,index_2_dom_other=None,
                                          sim_mat=None,ax=None, cmap=None, title=None):
     '''
 
-    :param partitions:
-    :type partitions:
-    :param index_2_domain:
-    :type index_2_domain:
-    :param res:
+    :param partenseble: CHAMP partition ensemble
+   # :param partitions:
+   # :type partitions:
+   # :param index_2_domain:
+   # :type index_2_domain:
     :param sim_mat:
     :type sim_mat:
     :param ax: Axes to draw the figure on.  New figure created if not supplied.
@@ -320,8 +320,8 @@ def plot_similarity_heatmap_single_layer_custom(partitions, index_2_domain, res,
     :rtype: matplolib.Axes,np.array
 
     '''
-
-    allgams = [res[ind] for ind in rand_ind]
+    rand_ind=range(len(partensemble.partitions))
+    allgams = [partensemble.resolutions[ind] for ind in rand_ind]
     
     if cmap is None:
         cmap = 'PuBu'
@@ -330,7 +330,7 @@ def plot_similarity_heatmap_single_layer_custom(partitions, index_2_domain, res,
         f=plt.figure()
         ax=f.add_subplot(111)
 
-    ind_vals=list(zip(index_2_domain.keys(),[val[0][0] for val in index_2_domain.values()]))
+    ind_vals=list(zip(partensemble.ind2doms.keys(),[val[0][0] for val in partensemble.ind2doms.values()]))
     ind_vals.sort(key=lambda x:x[1])
     # Take the x coordinate of first point in each domain
     gamma_transitions = [val for ind, val in ind_vals]
