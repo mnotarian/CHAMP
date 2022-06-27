@@ -345,7 +345,7 @@ def plot_similarity_heatmap_single_layer_custom(partensemble, partitions_other=N
     else:
         ind_vals2 = ind_vals
         gamma_transitions2=gamma_transitions
-        partitions_other=partitions
+        partitions_other=partensemble.partitions
 
 
     # G2S, G1S = np.meshgrid(gamma_transitions2, gamma_transitions)
@@ -354,7 +354,7 @@ def plot_similarity_heatmap_single_layer_custom(partensemble, partitions_other=N
         AMI_mat = np.zeros((len(ind_vals), len(ind_vals2)))
         for i  in range(len(ind_vals)):
             for j in range(len(ind_vals2)):
-                partition1=partitions[ind_vals[i][0]]
+                partition1=partensemble.partitions[ind_vals[i][0]]
                 partition2=partitions_other[ind_vals2[j][0]]
 
                 AMI_mat[i][j] = adjusted_mutual_info_score(partition1,
