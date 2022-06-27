@@ -334,7 +334,7 @@ def plot_similarity_heatmap_single_layer_custom(partensemble, partitions_other=N
     ind_vals.sort(key=lambda x:x[1])
     # Take the x coordinate of first point in each domain
     gamma_transitions = [val for ind, val in ind_vals]
-    gamma_transitions.append(index_2_domain[ind_vals[-1][0]][-1][0])  # Append last point of last partition
+    gamma_transitions.append(partensemble.ind2doms[ind_vals[-1][0]][-1][0])  # Append last point of last partition
 
     #if there isn't a partition set to compare to the default is to compare to self.
     if not( index_2_dom_other is None or partitions_other is None):
