@@ -165,34 +165,34 @@ def plot_single_layer_modularity_domains(ind_2_domains, ax=None, colors=None, la
     return ax
 
 
-def plot_single_layer_modularity_domains_custom(ind_2_domains, res, mods, ax=None, colors=None, labels=None):
+def plot_single_layer_modularity_domains_custom(partensemble, ax=None, colors=None, labels=None):
     '''
     Plot the piece-wise linear curve for CHAMP of single layer partitions
-    :param ind_2_domains: dictionary mapping partition index to domain of dominance
-    :type ind_2_domains: { ind: [ np.array(gam_0x, gam_0y), np.array(gam_1x, gam_1y)  ] ,...}
-    :param res: list of gamma resolutions 
-    :para mods: list of original modularities
+    :param partensemble: CHAMP partition ensemble
+   # :param ind_2_domains: dictionary mapping partition index to domain of dominance
+  #  :type ind_2_domains: { ind: [ np.array(gam_0x, gam_0y), np.array(gam_1x, gam_1y)  ] ,...}
     :param ax: Matplotlib Axes object to draw the graph on
     :param colors: Either a single color or list of colors with same length as number of domains
     :return: ax  Reference to the ax on which plot is drawn.
     '''
-    allgams = [res[ind] for ind in rand_ind]
-    allmods=[mods[ind] for ind in rand_ind]
+    rand_ind=range(len(partensemble.partitions))
+    allgams = [partensemble.resolutions[ind] for ind in rand_ind]
+    allmods=[partensemble.orig_mods[ind] for ind in rand_ind]
     
     if ax==None:
         f=plt.figure()
         ax=f.add_subplot(111)
 
     if colors==None:
-        cnorm=mcolors.Normalize(vmin=0,vmax=len(ind_2_domains))
+        cnorm=mcolors.Normalize(vmin=0,vmax=len(partensemble.ind2doms))
         cmap=cm.get_cmap("Set1")
-        pal=lmap(lambda i : cmap(cnorm(i)),range(len(ind_2_domains)))
+        pal=lmap(lambda i : cmap(cnorm(i)),range(len(partensemble.ind2doms)))
     i=0
 
-    for i,ind_pts in enumerate(iteritems(ind_2_domains)):
+    for i,ind_pts in enumerate(iteritems(partensemble.ind2doms)):
         ind, pts = ind_pts
         if hasattr(colors, "__iter__"):
-            assert len(colors) == len(ind_2_domains)
+            assert len(colors) == len(partensemble.ind2doms)
             c=colors[i] #must match length
         else:
             c=pal[i] if colors == None else colors
