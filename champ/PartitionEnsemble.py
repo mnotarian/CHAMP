@@ -1535,7 +1535,7 @@ sub
 							path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
 
 
-		a2.set_ylabel(r"\# communities ($\ge 5$ nodes)")
+		a2.set_ylabel(r"\# communities ($\ge %d $ nodes)" % (self._min_com_size)")
 
 		ax.set_zorder(a2.get_zorder() + 1)  # put ax in front of ax2
 		ax.patch.set_visible(False)  # hide the 'canvas'
