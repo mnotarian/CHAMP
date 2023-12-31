@@ -1525,8 +1525,10 @@ sub
 
 
 
-		stp = a2.step(gammas, champ_coms, color="#cc78bc", where='post',
-					  path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
+		stp = a2.step(gammas, champ_coms, color="#cc78bc", where='post')
+		#original 2 lines below
+		#stp = a2.step(gammas, champ_coms, color="#cc78bc", where='post',
+		#			  path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
 		#	 stp.set_path_effects([patheffects.Stroke(linewidth=1, foreground='black'),
 		#					 patheffects.Normal()])
 
