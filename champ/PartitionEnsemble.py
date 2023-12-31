@@ -1482,7 +1482,7 @@ sub
 
 			ax.set_ylim([np.min(allmods) - 100, np.max(allmods) + 100])
 			mk1 = ax.scatter(allgams, allmods,
-							 color='red', marker='.', alpha=.6, s=10,
+							 color="#de8f05", marker='.', alpha=.6, s=10,
 							 label="modularity", zorder=2)
 
 		#take the x-coord of first point in each domain
@@ -1499,10 +1499,10 @@ sub
 
 
 
-		mk5 = ax.plot(gammas, mods, ls='--', color='green', lw=3, zorder=3)
+		mk5 = ax.plot(gammas, mods, ls='--', color="#029e73", lw=3, zorder=3)
 		mk5 = mlines.Line2D([], [], color='green', ls='--', lw=3)
 
-		mk2 = ax.scatter(gammas, mods, marker="v", color='blue', s=200, zorder=4)
+		mk2 = ax.scatter(gammas, mods, marker="v", color="#0173b2", s=150, zorder=4)
 		#	 ax.scatter(gamma_ins,orig_mods,marker='x',color='red')
 		ax.set_ylabel("modularity")
 
@@ -1510,28 +1510,28 @@ sub
 
 		a2 = ax.twinx()
 		a2.grid('off')
-		#	 a2.scatter(allgammas,allcoms,marker="^",color="#fe9600",alpha=1,label=r'\# communities ($\ge 5$ nodes)',zorder=1)
+		#	 a2.scatter(allgammas,allcoms,marker="^",color="#949494",alpha=1,label=r'\# communities ($\ge 5$ nodes)',zorder=1)
 		if not champ_only:
-			sct2 = a2.scatter(allgams, allcoms, marker="^", color="#91AEC1",
+			sct2 = a2.scatter(allgams, allcoms, marker="^", color="#949494",
 							  alpha=1, label=r'\# communities ($\ge %d$ nodes)'%(self._min_com_size),
 							  zorder=1)
 			#	 sct2.set_path_effects([path_effects.SimplePatchShadow(alpha=.5),path_effects.Normal()])
 	
 			# fake for legend with larger marker size
-			mk3 = a2.scatter([], [], marker="^", color="#91AEC1", alpha=1,
+			mk3 = a2.scatter([], [], marker="^", color="#949494", alpha=1,
 							 label=r'\# communities ($\ge %d$)'%(self._min_com_size),
 							 zorder=1,
 							 s=20)
 
 
 
-		stp = a2.step(gammas, champ_coms, color="#004F2D", where='post',
+		stp = a2.step(gammas, champ_coms, color="#cc78bc", where='post',
 					  path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
 		#	 stp.set_path_effects([patheffects.Stroke(linewidth=1, foreground='black'),
 		#					 patheffects.Normal()])
 
 		# for legend
-		mk4 = mlines.Line2D([], [], color='#004F2D', lw=2,
+		mk4 = mlines.Line2D([], [], color='#cc78bc', lw=2,
 							path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
 
 
