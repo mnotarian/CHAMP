@@ -1533,8 +1533,10 @@ sub
 		#					 patheffects.Normal()])
 
 		# for legend
-		mk4 = mlines.Line2D([], [], color='#cc78bc', lw=2,
-							path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
+		mk4 = mlines.Line2D([], [], color='#cc78bc', lw=2)
+		#original below
+		#mk4 = mlines.Line2D([], [], color='#cc78bc', lw=2,
+		#					path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
 
 
 		a2.set_ylabel(r"\# communities ($> %d $ nodes)" % (self._min_com_size))
