@@ -1510,31 +1510,31 @@ sub
 
 		a2 = ax.twinx()
 		a2.grid('off')
-		#	 a2.scatter(allgammas,allcoms,marker="^",color="#949494",alpha=1,label=r'\# communities ($\ge 5$ nodes)',zorder=1)
+		#	 a2.scatter(allgammas,allcoms,marker="d",color="#949494",alpha=1,label=r'\# communities ($\ge 5$ nodes)',zorder=1)
 		if not champ_only:
-			sct2 = a2.scatter(allgams, allcoms, marker="^", color="#949494",
+			sct2 = a2.scatter(allgams, allcoms, marker="d", color="#949494",
 							  alpha=1, label=r'\# communities ($\ge %d$ nodes)'%(self._min_com_size),
 							  zorder=1)
 			#	 sct2.set_path_effects([path_effects.SimplePatchShadow(alpha=.5),path_effects.Normal()])
 	
 			# fake for legend with larger marker size
-			mk3 = a2.scatter([], [], marker="^", color="#949494", alpha=1,
+			mk3 = a2.scatter([], [], marker="d", color="#949494", alpha=1,
 							 label=r'\# communities ($\ge %d$)'%(self._min_com_size),
 							 zorder=1,
 							 s=20)
 
 
-
+		#modified here to eliminate shadow effect
 		stp = a2.step(gammas, champ_coms, color="#cc78bc", where='post')
-		#original 2 lines below
+		#original 2 lines below - with shadow
 		#stp = a2.step(gammas, champ_coms, color="#cc78bc", where='post',
 		#			  path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
 		#	 stp.set_path_effects([patheffects.Stroke(linewidth=1, foreground='black'),
 		#					 patheffects.Normal()])
 
-		# for legend
+		# for legend - no shadow
 		mk4 = mlines.Line2D([], [], color='#cc78bc', lw=2)
-		#original below
+		#original below - with shadow
 		#mk4 = mlines.Line2D([], [], color='#cc78bc', lw=2,
 		#					path_effects=[path_effects.SimpleLineShadow(alpha=.5), path_effects.Normal()])
 
