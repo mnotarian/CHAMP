@@ -1510,15 +1510,15 @@ sub
 
 		a2 = ax.twinx()
 		a2.grid('off')
-		#	 a2.scatter(allgammas,allcoms,marker="|",color="#949494",alpha=1,label=r'\# communities ($\ge 5$ nodes)',zorder=1)
+		#	 a2.scatter(allgammas,allcoms,marker="d",color="#949494",alpha=1,label=r'\# communities ($\ge 5$ nodes)',zorder=1)
 		if not champ_only:
-			sct2 = a2.scatter(allgams, allcoms, marker="|", color="#949494",
+			sct2 = a2.scatter(allgams, allcoms, marker="d", color="#949494",
 							  alpha=1, label=r'\# communities ($\ge %d$ nodes)'%(self._min_com_size),
 							  zorder=1)
 			#	 sct2.set_path_effects([path_effects.SimplePatchShadow(alpha=.5),path_effects.Normal()])
 	
 			# fake for legend with larger marker size
-			mk3 = a2.scatter([], [], marker="|", color="#949494", alpha=1,
+			mk3 = a2.scatter([], [], marker="d", color="#949494", alpha=1,
 							 label=r'\# communities ($\ge %d$)'%(self._min_com_size),
 							 zorder=1,
 							 s=20)
